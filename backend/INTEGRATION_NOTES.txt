@@ -1,0 +1,26 @@
+NariHB integrated backend bundle
+=================================
+
+This folder is intended to be extracted into:
+  NariHB-main/backend/
+
+IMPORTANT: the .pth files in models/ are Git LFS POINTER FILES from the uploaded ZIP,
+not actual trained model weights. Inference will not work until you obtain the real
+weights from the original Git repository using Git LFS (git lfs pull) or another
+authorized model download source. Do not treat these tiny pointer files as model weights.
+
+The original Flask application also contains server-rendered HTML templates and static
+assets. Keep them inside backend/; do not overwrite the React frontend's src/ folder.
+
+Suggested local setup (Windows PowerShell, from NariHB-main):
+  py -3.12 -m venv backend\.venv
+  backend\.venv\Scripts\python.exe -m pip install --upgrade pip
+  backend\.venv\Scripts\python.exe -m pip install -r backend\requirements-full.txt
+  backend\.venv\Scripts\python.exe backend\app.py
+
+Review app.py and config.py before running, especially paths, database settings, upload
+handling, and any environment variables. The API contract should be checked in app.py
+and/or api/index.py before wiring the React frontend to it.
+
+Do not commit .env files, API keys, personal health records, uploaded images, generated
+reports, logs, or virtual environments to GitHub.
